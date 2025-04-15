@@ -11,3 +11,5 @@ Day 2
     roles
 Day 3
   EC2
+Day 4
+  vpc
