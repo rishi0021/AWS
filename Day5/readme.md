@@ -11,3 +11,6 @@ steps to create VPC
 9. create a server by command "python3 -m http.server 8000"
 10. check nacls network what traffic is allowed and denyed
 11. go to security group and add the port no you want to allow (8000)
+
+![image](https://github.com/user-attachments/assets/330f7e9e-7c93-4f26-92be-ebd8ea2e11fd)
+
