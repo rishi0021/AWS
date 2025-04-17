@@ -35,6 +35,8 @@
   go to security group -> allow http traffic
 13. copy the dns name of loadbalancer access from a browser 
 
+output:
+![image](https://github.com/user-attachments/assets/1b4f73da-8c2d-435c-a70a-ebd5af41b32f)
 
     
     
