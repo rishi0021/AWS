@@ -1,1 +1,33 @@
+good practice -team-feature-enviorment-domain
 
+
+-----------------------------
+create a s3 with ristricted permission
+
+1. create a S3 bucket 
+2. select your bucket
+      go to permission
+      bucket policy -> edit
+      select add statement
+3.write a json with the help of AWS resourse generator 
+      {
+    "Version": "2012-10-17",
+    "Id": "RestrictBucketToIAMUsersOnly",
+    "Statement": [
+      {
+        "Sid": "AllowOwnerOnlyAccess",
+        "Effect": "Deny",
+        "Principal": "*",
+        "Action": "s3:*",
+        "Resource": [
+          "arn:aws:s3:::your-bucket-name/*",
+          "arn:aws:s3:::your-bucket-name"
+        ],
+        "Condition": {
+          "StringNotEquals": {
+            "aws:PrincipalArn": "arn:aws:iam::AWS_ACCOUNT_ID:root"
+          }
+        }
+      }
+    ]
+      }
