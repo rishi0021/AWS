@@ -1,0 +1,28 @@
+1. create a s3 bucket 
+2.upload a HTML file on bucket 
+3.go to bucket properties 
+4.static webside hosting
+    enable static webside hosting 
+    enter index document "HTML file name"
+    save changes
+5.go to permission 
+    un check the block all public access 
+6.add a bucket policy 
+        {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "PublicReadGetObject",
+                "Effect": "Allow",
+                "Principal": "*",
+                "Action": [
+                    "s3:GetObject"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::<Bucket-Name>/*"
+                ]
+            }
+        ]
+    }
+
+** if you want to use JS which downloads/api call we need to enable cors 
