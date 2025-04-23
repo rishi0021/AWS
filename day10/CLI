@@ -13,4 +13,159 @@ aws --version
     AWS Secret Access Key [****************ugAl]:
     Default region name [None]:
     Default output format [json]:
-6
+
+
+## tasks
+** create a ec2 from cli
+1. create a key vaue pair
+---
+aws ec2 create-key-pair --key-name MyKeyPair --query 'KeyMaterial' --output text > MyKeyPair.pem
+---
+2.create a security group
+---
+C:\Users\Rishikesh>aws ec2 create-security-group --group-name my-sg --description "My security group" --vpc-id vpc-0ecf12a8a85ba8ca4
+{
+    "GroupId": "sg-0ae63372baabed350",
+    "SecurityGroupArn": "arn:aws:ec2:us-east-1:471112526545:security-group/sg-0ae63372baabed350"
+}
+---
+3. enter the parameter and create 
+---
+C:\Users\Rishikesh>aws ec2 run-instances --image-id ami-0d59d17fb3b322d0b  --count 1 --instance-type t2.micro --key-name MyKeyPair --security-group-ids sg-0ae63372baabed350
+{
+    "ReservationId": "r-0d1f1269ee1a5f155",
+    "OwnerId": "471112526545",
+    "Groups": [],
+    "Instances": [
+        {
+            "Architecture": "x86_64",
+            "BlockDeviceMappings": [],
+            "ClientToken": "bf188587-224e-43cc-b50e-8b97a0a011af",
+            "EbsOptimized": false,
+            "EnaSupport": true,
+            "Hypervisor": "xen",
+            "NetworkInterfaces": [
+                {
+                    "Attachment": {
+                        "AttachTime": "2025-04-23T07:28:09.000Z",
+                        "AttachmentId": "eni-attach-0f28547abf65f3e59",
+                        "DeleteOnTermination": true,
+                        "DeviceIndex": 0,
+                        "Status": "attaching",
+                        "NetworkCardIndex": 0
+                    },
+                    "Description": "",
+                    "Groups": [
+                        {
+                            "GroupId": "sg-0ae63372baabed350",
+                            "GroupName": "my-sg"
+                        }
+                    ],
+                    "Ipv6Addresses": [],
+                    "MacAddress": "12:51:bf:ee:e7:99",
+                    "NetworkInterfaceId": "eni-0648a441607d02d19",
+                    "OwnerId": "471112526545",
+                    "PrivateDnsName": "ip-172-31-87-196.ec2.internal",
+                    "PrivateIpAddress": "172.31.87.196",
+                    "PrivateIpAddresses": [
+                        {
+                            "Primary": true,
+                            "PrivateDnsName": "ip-172-31-87-196.ec2.internal",
+                            "PrivateIpAddress": "172.31.87.196"
+                        }
+                    ],
+                    "SourceDestCheck": true,
+                    "Status": "in-use",
+                    "SubnetId": "subnet-0e7bca6bb39d99176",
+                    "VpcId": "vpc-0ecf12a8a85ba8ca4",
+                    "InterfaceType": "interface",
+                    "Operator": {
+                        "Managed": false
+                    }
+                }
+            ],
+            "RootDeviceName": "/dev/sda1",
+            "RootDeviceType": "ebs",
+            "SecurityGroups": [
+                {
+                    "GroupId": "sg-0ae63372baabed350",
+                    "GroupName": "my-sg"
+                }
+            ],
+            "SourceDestCheck": true,
+            "StateReason": {
+                "Code": "pending",
+                "Message": "pending"
+            },
+            "VirtualizationType": "hvm",
+            "CpuOptions": {
+                "CoreCount": 1,
+                "ThreadsPerCore": 1
+            },
+            "CapacityReservationSpecification": {
+                "CapacityReservationPreference": "open"
+            },
+            "MetadataOptions": {
+                "State": "pending",
+                "HttpTokens": "required",
+                "HttpPutResponseHopLimit": 2,
+                "HttpEndpoint": "enabled",
+                "HttpProtocolIpv6": "disabled",
+                "InstanceMetadataTags": "disabled"
+            },
+            "EnclaveOptions": {
+                "Enabled": false
+            },
+            "BootMode": "uefi-preferred",
+            "PrivateDnsNameOptions": {
+                "HostnameType": "ip-name",
+                "EnableResourceNameDnsARecord": false,
+                "EnableResourceNameDnsAAAARecord": false
+            },
+            "MaintenanceOptions": {
+                "AutoRecovery": "default"
+            },
+            "CurrentInstanceBootMode": "legacy-bios",
+            "Operator": {
+                "Managed": false
+            },
+            "InstanceId": "i-0396f8cdcf29a2b71",
+            "ImageId": "ami-0d59d17fb3b322d0b",
+            "State": {
+                "Code": 0,
+                "Name": "pending"
+            },
+            "PrivateDnsName": "ip-172-31-87-196.ec2.internal",
+            "PublicDnsName": "",
+            "StateTransitionReason": "",
+            "KeyName": "MyKeyPair",
+            "AmiLaunchIndex": 0,
+            "ProductCodes": [],
+            "InstanceType": "t2.micro",
+            "LaunchTime": "2025-04-23T07:28:09.000Z",
+            "Placement": {
+                "GroupName": "",
+                "Tenancy": "default",
+                "AvailabilityZone": "us-east-1c"
+            },
+            "Monitoring": {
+                "State": "disabled"
+            },
+            "SubnetId": "subnet-0e7bca6bb39d99176",
+            "VpcId": "vpc-0ecf12a8a85ba8ca4",
+            "PrivateIpAddress": "172.31.87.196"
+        }
+    ]
+}
+
+
+---
+screenshort 
+
+
+
+** check S3 buckets
+---
+command: aws s3 ls
+output: 2025-04-23 11:34:04 1newbucket
+---
