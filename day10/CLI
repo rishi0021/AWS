@@ -1,1 +1,16 @@
+##Steps to set up CLI
 
+1. Download cli form amazon offical webside 
+2. open terminal on your system 
+3. in aws dashboard to the top right corner select your username ->security credentials ->access key ->select create access key 
+4. run the command aws comfigure to set up the cli
+5.check if aws cli has been installed on system 
+---
+aws --version
+---
+5. get the values from aws i.e
+    AWS Access Key ID [****************7FWT]:
+    AWS Secret Access Key [****************ugAl]:
+    Default region name [None]:
+    Default output format [json]:
+6
