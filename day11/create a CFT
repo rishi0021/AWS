@@ -1,0 +1,6 @@
+##Steps to create a cft 
+
+1. login in aws 
+2. search for cloud formation
+3. create a template and upload it 
+4. check if the resources are created 
